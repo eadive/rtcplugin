@@ -18,24 +18,8 @@ angular.module('webrtcIiApp')
 
     var stream;
 
-    VideoStream.get()
-    .then(function (s) {
-      stream = s;
-      Room.init(stream);
-      stream = URL.createObjectURL(stream);
-      if (!$routeParams.roomId) {
-        Room.createRoom('Teste')
-        .then(function (roomId) {
-          // $location.path('/room/' + roomId);
-          Room.joinRoom(roomId);
-        });
-      } else {
-        Room.joinRoom($routeParams.roomId);
-      }
-    }, function () {
-      $scope.error = 'No audio/video permissions. Please refresh your browser and allow the audio/video capturing.';
-    });
     $scope.peers = [];
+
     Room.on('peer.stream', function (peer) {
       console.log('Client connected, adding new stream');
       $scope.peers.push({
@@ -53,4 +37,24 @@ angular.module('webrtcIiApp')
     $scope.getLocalVideo = function () {
       return $sce.trustAsResourceUrl(stream);
     };
+
+    $scope.createRoom = function(classroom) {
+
+      $scope.classroom = classroom.name;
+      VideoStream.get()
+      .then(function (s) {
+        stream = s;
+        Room.init(stream);
+        stream = URL.createObjectURL(stream);
+        if (classroom) {
+          Room.createRoom(classroom.name)
+          .then(function (roomId) {
+            Room.joinRoom(roomId);
+          });
+        }
+      }, function () {
+        $scope.error = 'No audio/video permissions. Please refresh your browser and allow the audio/video capturing.';
+      });
+
+    }
   }]);

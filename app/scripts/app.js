@@ -17,10 +17,6 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/room/:roomId', {
-        templateUrl: 'views/room.html',
-        controller: 'RoomCtrl'
-      })
       .when('/room', {
         templateUrl: 'views/room.html',
         controller: 'RoomCtrl'
