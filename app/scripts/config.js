@@ -1,0 +1,1 @@
+  angular.module('webrtcIiApp').constant('config', {SIGNALIG_SERVER_URL: 'http://localhost:5555'});
