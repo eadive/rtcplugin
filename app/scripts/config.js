@@ -1,1 +1,2 @@
-  angular.module('webrtcIiApp').constant('config', {SIGNALIG_SERVER_URL: 'http://ec2-54-94-200-79.sa-east-1.compute.amazonaws.com:5555'});
+//angular.module('webrtcIiApp').constant('config', {SIGNALIG_SERVER_URL: 'http://ec2-54-94-200-79.sa-east-1.compute.amazonaws.com'});//
+angular.module('webrtcIiApp').constant('config', {SIGNALIG_SERVER_URL: 'http://localhost:5555'});

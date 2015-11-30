@@ -78,8 +78,7 @@ angular.module('webrtcIiApp')
       }
     }
 
-    var socket = Io.connect(config.SIGNALIG_SERVER_URL),
-        connected = false;
+    var socket = Io.connect(config.SIGNALIG_SERVER_URL), connected = false;
 
     function addHandlers(socket) {
       socket.on('peer.connected', function (params) {
